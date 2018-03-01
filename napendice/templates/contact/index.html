@@ -1,0 +1,87 @@
+{% extends "home/base_home.html" %}
+
+{% block content %}
+  {% include "includes/header.html" %}
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="row">
+        <div class="medium-4 columns">
+          <label>Nombre :
+            {{ form.name}}
+          </label>
+          {% for error in form.name.errors %}
+            <div class="col-xs-12">
+              <p class="help-text error-field">
+                  {{ error|escape }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-4 columns">
+          <label>Email :
+            {{ form.email}}
+          </label>
+          {% for error in form.email.errors %}
+            <div class="col-xs-12">
+              <p class="help-text error-field">
+                  {{ error|escape }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-4 columns">
+          <label>Telefono :
+            {{ form.telephone }}
+          </label>
+          {% for error in form.telephone.errors %}
+            <div class="col-xs-12">
+              <p class="help-text error-field">
+                  {{ error|escape }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-4 columns">
+          <label>Asunto :
+            {{ form.subject}}
+          </label>
+          {% for error in form.subject.errors %}
+            <div class="col-xs-12">
+              <p class="help-text error-field">
+                  {{ error|escape }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-4 columns">
+          <label>Consulta :
+            {{ form.send}}
+          </label>
+          {% for error in form.send.errors %}
+            <div class="col-xs-12">
+              <p class="help-text error-field">
+                  {{ error|escape }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="medium-4 columns">
+        <button type="submit" class="success button" value="Guardar">Save</button>
+      </div>
+    </div>
+
+    </form>
+{% endblock %}

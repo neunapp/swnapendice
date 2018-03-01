@@ -1,0 +1,17 @@
+$cssCore: false;
+$cssHelpers: true;
+$devMode: false;
+
+// ed-grid import
+@import 'ed-grid';
+
+// local import
+@import 'config-styles';
+
+// local modules import
+@import 'module/header';
+@import 'module/footer';
+@import 'module/social';
+@import 'module/cards';
+@import 'module/divider';
+@import 'module/article';

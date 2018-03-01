@@ -1,0 +1,116 @@
+{% extends "home/base_home.html" %}
+
+{% block title %}
+  {{ article.title }} |{{ article.category }} | {{article.city }} | apendicepe | apendice.pe
+{% endblock %}
+
+{% block description %}
+  {{ article.description }}
+{% endblock %}
+
+{% block content %}
+  {% include "include/header.html" %}
+
+  <main class="main">
+    <div class="ed-container">
+
+      <article class="ed-item ed-container s-100 l-70 article">
+        <div class="ed-item s-100 article__date">{{ article.created }}</div>
+        <div class="ed-item s-100 article__info">
+          <div class="article__data">
+            <h1 class="article__title">{{ article.title }}</h1>
+            <p class="article__description">{{ article.description }}</p>
+          </div>
+          <div class="article__widget">
+            <ul class="article__widget__list">
+              <li class="article__widget__item">
+                <i class="fa fa-tags"></i>{{ article.category }}
+              </li>
+              <li class="article__widget__item">
+                <i class="fa fa-eye"></i>100
+              </li>
+              <li class="article__widget__item">
+                <a href="#" class="article__widget__link"><i class="fa fa-facebook"></i> compartir</a>
+              </li>
+              <li class="article__widget__item">
+                <a href="#" class="article__widget__link"><i class="fa fa-twitter"></i>compartir</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="ed-item s-100">
+          <img src="{{ article.image.url }}" class="article__img" alt="{{ article.title }}">
+        </div>
+        <div class="ed-item s-100 article__content">
+          {{ article.content|safe }}
+        </div>
+      </article>
+
+      <!--<secion class="ed-item s-100 l-30 recent-news-container">
+
+        <h2 class="recent-news-container__title">Noticias recientes</h2>
+        {% for news in recientes %}
+        <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}" class="recent-news">
+          <img src="{{ news.image.url }}" alt="" class="miniatura">
+          <div class="recent-news__content">
+            <span class="recent-news__date">{{ news.date|timesince }}</span>
+             <h3 class="recent-news__title">
+              {{ news.title }}
+            </h3>
+          </div>
+        </a>
+        {% endfor %}
+      </section>-->
+    </div>
+
+
+    <div class="ed-container">
+      <div class="ed-item s-100">
+        <div class="divider--top"></div>
+      </div>
+      <div class="ed-item">
+        <h3 class="title-more-news">
+          Noticias relacionadas
+        </h3>
+      </div>
+    </div>
+
+    <div class="ed-container">
+
+      {% for news in standar %}
+
+        <article class="ed-item s-100 m-1-3 l-25 news news--standar">
+          <div class="news__image">
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" />
+            {% if news.category|slugify == 'investigacion' %}
+            <div class="news__category--investigation">{{ news.category }}</div>
+            {% elif  news.category|slugify == 'politica' %}
+            <div class="news__category--politics">{{ news.category }}</div>
+            {% elif  news.category|slugify == 'miscelanea' %}
+            <div class="news__category--miscelanea">{{ news.category }}</div>
+            {% else %}
+            <div class="news__category--topicality">{{ news.category }}</div>
+            {% endif %}
+          </div>
+
+          <div class="news__body">
+            <div class="news__date">Hace {{ news.created|timesince }}</div>
+            <h2 class="news__title--outstanding">
+              <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}">
+                {{ news.title }}
+              </a>
+            </h2>
+            <p class="news__description--outstanding">{{ news.description }}</p>
+            <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}" class="news__link">Ver más...</a>
+          </div>
+        </article>
+
+      {% endfor %}
+
+    </div> <!-- fin de noticas standar -->
+
+
+  </main>
+
+  {% include "include/footer.html" %}
+{% endblock %}

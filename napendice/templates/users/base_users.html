@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load  staticfiles %}
+
+{% block css %}
+
+  <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'fundation/css/foundation.min.css' %}">
+{% endblock css %}
+
+{% block js %}
+
+  <script src="{% static 'fundation/js/vendor/jquery.js' %}"></script>
+  <script src="{% static 'fundation/js/vendor/what-input.js' %}"></script>
+  <script src="{% static 'fundation/js/vendor/foundation.js' %}"></script>
+  <script src="{% static 'fundation/js/app.js' %}"></script>
+{% endblock js %}

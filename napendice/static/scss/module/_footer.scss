@@ -1,0 +1,16 @@
+.main-footer {
+
+  background-color: map-get($colors-page, black);
+  color: map-get($colors-page, white);
+  padding: $gutter;
+  @include stickyFooter;
+  margin-top: $gutter * 2;
+  a {
+    margin-left: .5em;
+    color: map-get($colors-page, blue);
+    font-size: 1.1em;
+    &:hover {
+      color: lighten(map-get($colors-page, blue), 5%);
+    }
+  }
+}

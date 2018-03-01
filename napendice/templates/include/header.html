@@ -1,0 +1,50 @@
+{% load staticfiles %}
+
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="header-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+					<li> &emsp;&emsp;&emsp;&emsp;&emsp;</li>
+			{% for category in myCategorys %}
+					<li class="main-menu__item">
+						<a href="{% url 'articulo_app:article-category' category.name|slugify %}">{{ category.name|title }}</a>
+					</li>
+			{% endfor %}
+    </ul>
+	</div>
+  <div class="top-bar-right">
+    <form action="/buscar-noticias" method="get">{% csrf_token %}
+    <ul class="menu">
+      <li>{{form.kword}}</li>
+      <li><button type="submit" class="button">Buscar</button></li>
+    </ul>
+    </form>
+  </div>
+</div>
+<header class="main-header cross-center">
+	<div class="ed-container">
+		<div class="ed-item s-45 m-35 main-logo">
+			<a href="{% url 'home_app:index' %}">
+				<img src="{% static 'img/logo-apendice.png' %}" alt="logo-apendice">
+			</a>
+		</div>
+
+		<div class="ed-item s-55 m-65 cross-center main-end">
+			<!--<div class="social">
+				<form method="get" class="form-horizontal">{% csrf_token %}
+     		<input type="text" placeholder="Buscar ..." required>
+     		<button type="submit" hidden="false">Buscar</button>
+ 				</form>
+			</div>-->
+			<div class="social">
+				<a href="https://www.facebook.com/apendice.pe" class="social--facebook"><i class="fa fa-facebook"></i></a>
+				<a href="https://twitter.com/apendicepe" class="social--twitter"><i class="fa fa-twitter"></i></a>
+			</div>
+		</div>
+	</div>
+</header> <!-- .main-header -->
+<div class="divider--bottom"></div>

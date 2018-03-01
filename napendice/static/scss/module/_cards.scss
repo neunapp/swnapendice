@@ -1,0 +1,247 @@
+%tagCategory {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: map-get($colors-page, white);
+  padding: .6em 1.2em;
+  font-size: .9em;
+}
+
+%tagTitle {
+  font-family: $font-title;
+  font-weight: $regular;
+  margin: 0;
+  padding: .4em 0 0 0;
+  a {
+    color: map-get($colors-page, black);
+  }
+}
+
+%tagDescription {
+  flex: 1;
+}
+
+
+.news-columns {
+  max-width    : $max-width;
+  margin-left  : auto;
+  margin-right : auto;
+  width        : 100%;
+  @include from(l) {
+    display: flex;
+  }
+}
+
+.news-column {
+    margin : 0;
+    @include from(m) {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+    @include from(l) {
+      &:first-child {
+        border-right: 1px solid map-get($colors-page, white-smoke);
+      }
+    }
+}
+// hijo de .news-column
+.news {
+  background-color: map-get($colors-page, white);
+  color: lighten(map-get($colors-page, black), 35%);
+  padding-top  : $gutter;
+  padding-left  : $gutter;
+  padding-right : $gutter;
+  display: flex;
+  flex-direction: column;
+  @include from(l) {
+    flex: 1;
+  }
+
+  &:hover, &:focus {
+    color: lighten(map-get($colors-page, black), 15%);
+  }
+
+  &__image {
+    position: relative;
+    margin: 0;
+    padding: 0;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  // categorias
+  &__category--politics {
+    @extend %tagCategory;
+    background-color: map-get($colors-category, blue);
+  }
+
+  &__category--investigation {
+    @extend %tagCategory;
+    background-color: map-get($colors-category, green);
+  }
+
+  &__category--topicality {
+    @extend %tagCategory;
+    background-color: map-get($colors-category, orange);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: $gutter 0;
+  }
+
+  &__date {
+    font-size: .8em;
+  }
+
+  &__title--home {
+    @extend %tagTitle;
+  }
+
+  &__title--outstanding {
+    @extend %tagTitle;
+    @include from(m) {
+      font-size: .95em;
+    }
+  }
+
+  &__description {
+    @extend %tagDescription;
+  }
+
+  &__description--outstanding {
+    @extend %tagDescription;
+    @include from(m) {
+      font-size: .8em;
+    }
+
+  }
+
+
+  &__link {
+    color: map-get($colors-page, blue);
+    font-size: .85em;
+    &:hover {
+      text-decoration: none;
+      color: lighten(map-get($colors-page, blue), 25%);
+
+    }
+  }
+
+}
+
+@include from(m) {
+  .news--outstanding {
+    flex-direction: row;
+    border-bottom: 1px solid map-get($colors-page, white-smoke);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .news__image {
+      width: 250px;
+    }
+
+    .news__body {
+      flex: 1;
+      padding: 0 $gutter $gutter;
+    }
+
+  }
+}
+
+.news--standar {
+  text-align: center;
+  @include from(m) {
+    flex: 0 1 auto;
+    border-bottom: 1px solid map-get($colors-page, white-smoke);
+    border-right: 1px solid map-get($colors-page, white-smoke);
+    &:nth-child(3n) {
+      border-right: none;
+    }
+  }
+
+  @include from(l) {
+    &:nth-child(4n) {
+      border-left: 1px solid map-get($colors-page, white-smoke);
+      border-right: none;
+    }
+  }
+}
+
+.title-more-news {
+  text-align: center;
+  font-family: $font-title;
+  font-weight: 400;
+  font-size: 1.5em;
+  color: map-get($colors-page, black);
+  &::before, &::after {
+    content: '-',
+  }
+}
+
+.recent-news-container {
+
+  $bg-color-title: map-get($colors-page, black);
+  $color-title: map-get($colors-page, white);
+  $border-color-title: lighten(map-get($colors-page, blue), 5);
+  display: flex;
+  flex-direction: column;
+  &__title {
+    background-color: $bg-color-title;
+    color: $color-title;
+    border-bottom: 5px solid $border-color-title;
+    font-size: 1.1em;
+    text-align: center;
+    padding: .6em 0;
+  }
+}
+
+.recent-news {
+  $bg-color: map-get($colors-page, white);
+  $color: lighten(map-get($colors-page, black), 35%);
+  $border-color: map-get($colors-page, white-smoke);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+  color: $color;
+  background-color: $bg-color;
+  padding-top: .7em;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+  &:hover &__title {
+    font-weight: $regular;
+  }
+
+  &__img {
+    flex-basis: 35%;
+    flex-grow: 1;
+    display: block;
+  }
+  &__content {
+    flex-basis: 65%;
+    display: flex;
+    flex-direction: column;
+    padding-left: $gutter;
+  }
+
+  &__date {
+    font-size: .8em;
+  }
+
+  &__title {
+    font-size: .95em;
+    color: map-get($colors-page, black);
+    font-weight: $light;
+    margin: .3em 0 0;
+  }
+}

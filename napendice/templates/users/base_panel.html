@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load  staticfiles %}
+
+{% block css %}
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">
+
+  <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+  <link href="{% static 'css/textAngular/textAngular.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'fundation/css/foundation.min.css' %}">
+{% endblock css %}
+
+{% block js %}
+
+  <script src="{% static 'fundation/js/vendor/jquery.js' %}"></script>
+  <script src="{% static 'fundation/js/vendor/what-input.js' %}"></script>
+  <script src="{% static 'fundation/js/vendor/foundation.js' %}"></script>
+  <script src="{% static 'fundation/js/app.js' %}"></script>
+  <!-- archivos angularjs -->
+  <script src="{% static 'js/angularjs/angular.min.js' %}"></script>
+  <script src="{% static 'js/angularjs/angular-cookies.js' %}"></script>
+  <!-- controladores base -->
+  <script src="{% static 'angularApp/common/common.services.js' %}"></script>
+  <script src="{% static 'angularApp/app.js' %}"></script>
+  <!-- ng-editor-->
+  <script src="{% static 'js/angularjs/diretivas/textAngular/textAngular-rangy.min.js' %}"></script>
+  <script src="{% static 'js/angularjs/diretivas/textAngular/textAngular-sanitize.min.js' %}"></script>
+  <script src="{% static 'js/angularjs/diretivas/textAngular/textAngular.min.js' %}"></script>
+
+  <!-- controladores base -->
+  <script src="{% static 'angularApp/app/articulo/articulo_addCtrl.js' %}"></script>
+  <script src="{% static 'angularApp/common/services/articulo/article.services.js' %}"></script>
+
+{% endblock js %}

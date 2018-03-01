@@ -1,0 +1,16 @@
+$color-shadow: #ecf0f1;
+
+.divider {
+  &--bottom {
+    height: $gutter;
+    border-bottom: 1px solid map-get($colors-page, white-smoke);
+    box-shadow: inset 0px -8px 1px 0px $color-shadow;
+
+  }
+  &--top {
+    height: $gutter;
+    border-top: 1px solid map-get($colors-page, white-smoke);
+    box-shadow: inset 0px 8px 1px 0px $color-shadow;
+  }
+
+}

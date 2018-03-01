@@ -1,0 +1,35 @@
+{% extends "miscelanea/base_miscelanea.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+ Agregar Medios
+{% endblock %}
+
+{% block content %}
+    {% include "include/menu.html" %}
+
+    <div class="large-12 columns">
+      <div class="row">
+        <div class="callout">
+          <p>
+            Añadir Nueva Nota
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">{% csrf_token %}
+          <div class="callout">
+            <label>Descripcion de Imagen
+              {{form.name}}
+            </label>
+            <label for="id_files" class="button">Archivo o Imagen</label>
+            {{form.files}}
+          </div>
+          <button type="submit" class="success button">Guardar</button>
+        </form>
+      </div>
+    </div>
+
+{% endblock %}

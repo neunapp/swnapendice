@@ -1,0 +1,130 @@
+.article {
+  $color-title: map-get($colors-page, black);
+  $color-content: lighten(map-get($colors-page, black), 20%);
+  $color-background: map-get($colors-page, white);
+  $color-border: darken(map-get($colors-page, white-smoke),10%);
+  padding-top: $gutter;
+  color: $color-content;
+  background-color: $color-background;
+
+  @include from(l) {
+    border-right: 1px solid $color-border;
+    border-left: 1px solid $color-border;
+
+  }
+  // hijo de article
+  &__date {
+    font-size: .8em;
+    padding-bottom: $gutter;
+    font-style: italic;
+  }
+  // hijo de article
+  &__info {
+    margin-bottom: $gutter;
+    @include from(m) {
+      display: flex;
+      flex: 1;
+    }
+  }
+    // hijo de info
+  &__data {
+    border-bottom: 1px dashed $color-border;
+    @include from(m) {
+      flex: 4;
+      border-right: 1px dashed $color-border;
+      padding-right: $gutter;
+
+    }
+    @include from(l) {
+      flex: 5;
+    }
+  }
+  &__title {
+    margin: 0;
+    font-family: $font-title;
+    color: $color-title
+  }
+  &__description {
+
+  }
+  // hijo de info
+  &__widget {
+      flex: 1;
+      @include from(m) {
+        padding: 0 $gutter;
+        border-bottom: 1px dashed $color-border;
+      }
+    &__list {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      @include from(m) {
+        flex-direction: column;
+      }
+    }
+    &__item {
+      border-right: 1px dashed $color-border;
+      padding-top: $gutter/2;
+      padding-right: $gutter/2;
+      padding-left: $gutter/2;
+      padding-bottom: $gutter/2;
+      color: map-get($colors-page, black);
+      font-size: .85em;
+      display: block;
+
+
+      @include from(m) {
+        border-right: 0;
+        padding-left: 0;
+        border-bottom: 1px solid $color-border;
+      }
+
+      &:nth-child(1), &:nth-child(2) {
+          display: none;
+          @include from(m) {
+            display: block;
+          }
+      }
+
+      &:nth-child(3) {
+          padding-left: 0;
+      }
+
+      .fa {
+        color: lighten($color-content, 25%);
+        padding-right: .5em;
+      }
+
+    }
+    &__link {
+      color: map-get($colors-page, black);
+      &:hover {
+        text-decoration: none;
+      }
+      &:hover .fa-facebook {
+        color: map-get($colors-social, facebook);
+      }
+      &:hover .fa-twitter {
+        color: map-get($colors-social, twitter);
+      }
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    @include from(l) {
+      width: 900px;
+    }
+  }
+
+  &__content {
+    padding-top: $gutter * 2;
+    font-size: .9em;
+    letter-spacing: .07em;
+    word-spacing: .1em;
+    line-height: 1.5;
+    font-weight: $regular;
+  }
+}

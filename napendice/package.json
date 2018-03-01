@@ -1,0 +1,20 @@
+{
+  "name": "apendice.pe",
+  "version": "1.0.0",
+  "description": "portal de noticias",
+  "main": "templates/home",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "neunapp",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.5.2",
+    "browser-sync": "^2.17.5",
+    "cssnano": "^3.8.0",
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-sass": "^2.3.2"
+  }
+}

@@ -1,0 +1,64 @@
+// tamano de header de la pagina
+$height-header: 100px;
+
+.main-nav {
+    background-color: map-get($colors-page, black);
+}
+
+.main-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  &__item{
+    border-left: 1px solid lighten(map-get($colors-page, black),15%);
+    &:last-child {
+      border-right: 1px solid lighten(map-get($colors-page, black),15%);
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: $gutter * 1.2;
+    color: map-get($colors-page, white);
+    text-transform: uppercase;
+    font-size: .8em;
+    position: relative;
+    &:hover {
+      text-decoration: none;
+      transition: background-color .6s;
+      background-color: darken(map-get($colors-page, black),8%);
+      &::before {
+        transition: opacity 2s;
+        opacity: 1;
+      }
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 5px;
+      background-color: map-get($colors-page, blue);
+      top: 0;
+      left: 0;
+      position: absolute;
+      opacity: 0;
+    }
+  }
+}
+
+.main-header {
+  height: $height-header;
+  background-color: map-get($colors-page, white);
+
+}
+
+.main-logo {
+  padding-top: .8em;
+
+  img {
+    width: 80%;
+    @include from(m) {
+      width: 40%;
+    }
+  }
+}

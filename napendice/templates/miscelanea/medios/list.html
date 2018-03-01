@@ -1,0 +1,45 @@
+{% extends "miscelanea/base_miscelanea.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+ Lista de Medios
+{% endblock %}
+
+{% block content %}
+    {% include "include/menu.html" %}
+
+    <div class="large-12 columns">
+      <div class="row">
+        <div class="callout">
+          <p>
+            Lista de Fotos y Archivos Guardados <a href="{% url 'miscelanea_app:medios-add' %}" class="button secondary small" type="button">
+              <span aria-hidden="true">Nuevo</span>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        {% for l in list_medios  %}
+        <div class="medium-4 columns">
+          <div class="card" style="height: 300px;">
+            <div class="card-divider">
+              <h5>{{l.name}}</h5>
+              <h7>URL:<a href="{{l.files.url}}">{{l.files_url}}</a></h7>
+              <a href="{% url 'miscelanea_app:medios-delete' l.pk %}" class="button alert tiny" type="button">
+                <span aria-hidden="true">Eliminar</span>
+              </a>
+            </div>
+            {% if l.files.url != None %}
+              <img src="{{l.files.url}}">
+            {% else %}
+              <img src="{% static 'img/file.png' %}">
+              {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+{% endblock %}

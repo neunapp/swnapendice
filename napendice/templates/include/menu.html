@@ -1,0 +1,39 @@
+{% load staticfiles %}
+
+<div class="nav">
+<div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Administrador Apendice</li>
+      <li><a href="{% url 'articulo_app:article-list' 2 %}">Inicio</a></li>
+      <li>
+        <a href="#">Notas</a>
+        <ul class="menu vertical">
+          <li><a href="{% url 'articulo_app:article-add' %}">Nueva</a></li>
+          <li><a href="{% url 'articulo_app:article-list' 0 %}">Publicadas</a></li>
+          <li><a href="{% url 'articulo_app:article-list' 1 %}">Borrador</a></li>
+          <li><a href="{% url 'articulo_app:article-list' 2 %}">Todas</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'miscelanea_app:medios-list' %}">Medios</a></li>
+      <li><a href="#">Categorias</a></li>
+      <li><a href="#">Tags</a></li>
+      <li>
+        <a href="#">Estadisticas</a>
+        <ul class="menu vertical nested">
+          <li><a href="#">Mas Visitados</a></li>
+          <li><a href="#">Mas Comentados</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="{% url 'users_app:logout' %}">Salir</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
