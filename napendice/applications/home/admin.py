@@ -1,6 +1,6 @@
 # # django
-# from django.contrib import admin
-# from django.contrib.admin import AdminSite
+from django.contrib import admin
+from django.contrib.admin import AdminSite
 #
 # # local
 # from .models import Contact
@@ -9,5 +9,5 @@
 #
 # # admin.site.register(Contact)
 #
-# AdminSite.site_header = 'Apendice admin'
-# AdminSite.site_title = 'Apendice admin'
+AdminSite.site_header = 'Adminstrador Apendice'
+AdminSite.site_title = 'Apendice admin'
