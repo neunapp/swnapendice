@@ -19,7 +19,6 @@ class Category(TimeStampedModel):
     modelo para almacenar categorias
     '''
     name = models.CharField('nombre', max_length=150)
-    anulate = models.BooleanField(default=False)
 
     objects = CategoryManager()
 
