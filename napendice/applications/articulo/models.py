@@ -13,6 +13,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.conf import settings
 
 # local
 from applications.miscelanea.models import Category, Tag
@@ -39,6 +40,7 @@ class Article(TimeStampedModel):
     )
     title = models.CharField('titulo', max_length=200)
     description = models.TextField('descripcion')
+    bajada = models.TextField('bajada', blank=True)
     date = models.DateTimeField('fecha de publicacion', blank=True, null=True)
     type_article = models.CharField(
         'tipo de articulo',
@@ -55,6 +57,22 @@ class Article(TimeStampedModel):
     slug = models.SlugField(editable=False, max_length=200)
     tag = models.ManyToManyField(Tag, verbose_name='tag')
     published = models.BooleanField('publicado')
+    user_created = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="usuario_editor",
+        verbose_name="Creado por",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
+    user_modified = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="usuario_editor_mod",
+        verbose_name="Modificado por",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
 
     objects = ArticleManager()
 

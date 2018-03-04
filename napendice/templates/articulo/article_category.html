@@ -41,7 +41,7 @@
                 {{ portada.title }}
               </a>
             </h1>
-            <p class="news__description">{{ portada.description|truncatechars_html:90 }}</p>
+            <p class="news__description">{{ portada.bajada|truncatechars_html:90 }}</p>
             <a href="{% url 'articulo_app:article-detail' portada.category|slugify portada.slug %}" class="news__link">Ver más...</a>
           </div>
 
@@ -76,7 +76,7 @@
                   {{ destacado.title }}
                 </a>
               </h2>
-              <p class="news__description--outstanding">{{ destacado.description|truncatechars_html:90 }}</p>
+              <p class="news__description--outstanding">{{ destacado.bajada|truncatechars_html:90 }}</p>
               <a href="{% url 'articulo_app:article-detail' destacado.category|slugify destacado.slug %}" class="news__link">Ver más...</a>
             </div>
           </article>
@@ -123,7 +123,7 @@
               {{ news.title }}
             </a>
           </h2>
-          <p class="news__description--outstanding">{{ news.description|truncatechars_html:90 }}</p>
+          <p class="news__description--outstanding">{{ news.bajada|truncatechars_html:90 }}</p>
           <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}" class="news__link">Ver más...</a>
         </div>
       </article>
@@ -171,7 +171,7 @@
             {{ news.title }}
           </a>
         </h2>
-        <p class="news__description--outstanding">{{ news.description|truncatechars_html:90 }}</p>
+        <p class="news__description--outstanding">{{ news.bajada|truncatechars_html:90 }}</p>
         <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}" class="news__link">Ver más...</a>
       </div>
       </article>

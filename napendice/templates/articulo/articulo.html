@@ -14,12 +14,12 @@
   <main class="main">
     <div class="ed-container">
 
-      <article class="ed-item ed-container s-100 l-70 article">
+      <article class="ed-item ed-container s-100 l-60 article">
         <div class="ed-item s-100 article__date">{{ article.created }}</div>
         <div class="ed-item s-100 article__info">
           <div class="article__data">
             <h1 class="article__title">{{ article.title }}</h1>
-            <p class="article__description">{{ article.description }}</p>
+            <p class="article__description">{{ article.bajada }}</p>
           </div>
           <div class="article__widget">
             <ul class="article__widget__list">
@@ -100,7 +100,7 @@
                 {{ news.title }}
               </a>
             </h2>
-            <p class="news__description--outstanding">{{ news.description }}</p>
+            <p class="news__description--outstanding">{{ news.bajada }}</p>
             <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}" class="news__link">Ver más...</a>
           </div>
         </article>

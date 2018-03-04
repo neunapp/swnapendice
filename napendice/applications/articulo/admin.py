@@ -9,11 +9,11 @@ from .models import Article
 class ArticleAdmin(admin.ModelAdmin):
     list_display = (
         'title',
-        'description',
-        'date',
+        'created',
         'type_article',
         'published',
-        'pk',
+        'user_created',
+        'user_modified',
     )
     search_fields = ('title', 'description')
     list_filter = ('date',)
@@ -21,6 +21,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'title',
         'category',
         'description',
+        'bajada',
         'type_article',
         'content',
         'credits_article',
@@ -32,6 +33,10 @@ class ArticleAdmin(admin.ModelAdmin):
         'credits_image',
     )
     filter_horizontal = ('tag',)
-
+    def save_model(self, request, obj, form, change):
+        if not obj.id:
+            obj.user_created = request.user
+        obj.user_modified = request.user
+        obj.save()
 
 admin.site.register(Article,ArticleAdmin)
