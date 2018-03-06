@@ -10,24 +10,9 @@ urlpatterns = [
 
     # urls para la aplicacion articulo
     url(
-        r'^nueva-noticia/$',
-        views.ArticleAddView.as_view(),
-        name='article-add'
-    ),
-    url(
-        r'^articulo-listar/(?P<pk>\d+)/$',
+        r'^ultimas-noticias-peru/$',
         views.ArticleListView.as_view(),
         name='article-list'
-    ),
-    url(
-        r'^articulo-update/(?P<pk>\d+)/$',
-        views.ArticleUpdateView.as_view(),
-        name='article-update'
-    ),
-    url(
-        r'^articulo-delete/(?P<pk>\d+)/$',
-        views.ArticleDeleteView.as_view(),
-        name='article-delete'
     ),
     url(
         r'^(?P<category>[-\w]+)/$',

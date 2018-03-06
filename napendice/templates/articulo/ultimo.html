@@ -1,0 +1,60 @@
+{% extends "home/base_home.html" %}
+
+{% load thumbnail %}
+
+{% load l10n %}
+
+{% block title %}
+  Ultimas noticias en Perú - apendice
+{% endblock %}
+
+{% block description %}
+  Noticias del Perú y el mundo, ultimas noticas de politica, investigacion, actualidad, gobierno, peru, en apendice.pe.
+{% endblock %}
+
+{% block content %}
+  {% include "include/header.html" %}
+  <main class="main">
+      <div class="ed-item">
+        <h3 class="title-more-news">
+          Noticias recientes
+        </h3>
+      </div>
+    <div class="news-columns">
+      <div class="news-column">
+
+        {% for destacado in articles %}
+          <article class="news news--outstanding" style="height:210px;">
+            <div class="news__image">
+              <img src="{{ destacado.image.url }}" alt="{{ destacado.title }}" style="height:175px;" />
+              {% if destacado.category|slugify == 'investigacion' %}
+              <div class="news__category--investigation">{{ destacado.category }}</div>
+              {% elif  destacado.category|slugify == 'politica' %}
+              <div class="news__category--politics">{{ destacado.category }}</div>
+              {% elif  destacado.category|slugify == 'miscelanea' %}
+              <div class="news__category--miscelanea">{{ destacado.category }}</div>
+              {% else %}
+              <div class="news__category--topicality">{{ destacado.category }}</div>
+              {% endif %}
+            </div>
+
+
+            <div class="news__body">
+              <div class="news__date">Hace {{ destacado.created|timesince }}</div>
+              <h2 class="news__title--outstanding">
+                <a href="{% url 'articulo_app:article-detail' destacado.category|slugify destacado.slug %}">
+                  {{ destacado.title }}
+                </a>
+              </h2>
+              <p class="news__description--outstanding">{{ destacado.description|truncatechars_html:90 }}</p>
+              <a href="{% url 'articulo_app:article-detail' destacado.category|slugify destacado.slug %}" class="news__link">Ver más...</a>
+            </div>
+          </article>
+        {% endfor %}
+
+      </div>
+    </div> <!-- fin de noticias principales -->
+  </main>
+  {% include "include/footer.html" %}
+
+{% endblock %}

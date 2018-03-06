@@ -6,6 +6,7 @@ from django.views.generic import (
     TemplateView,
     DeleteView,
     UpdateView,
+    ListView,
 )
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
@@ -71,41 +72,59 @@ class ArticleCategoryView(TemplateView):
         return context
 
 
-class ArticleAddView(TemplateView):
-    template_name = 'articulo/add.html'
+class ArticleListView(ListView):
+    """"vista que lista articulos"""
 
-
-class ArticleListView(TemplateView):
-    """"vista que lista articulos por estado"""
-    template_name = 'articulo/list.html'
+    context_object_name = 'articles'
+    template_name = 'articulo/ultimo.html'
+    paginate_by = 12
 
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
-        context['kword'] = self.kwargs['pk']
+        context['form'] = SearchForm
         return context
 
+    def get_queryset(self):
+        queryset = Article.objects.filter(
+            published=True,
+        ).order_by('-created')
+        return queryset
 
-class ArticleUpdateView(DetailView):
-    """"vista para actualizar un articulo"""
-    template_name = 'articulo/update.html'
-    model = Article
+# class ArticleAddView(TemplateView):
+#     template_name = 'articulo/add.html'
+#
+#
+# class ArticleListView(TemplateView):
+#     """"vista que lista todos los articulos"""
+#     template_name = 'articulo/ultimo.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ArticleListView, self).get_context_data(**kwargs)
+#         context['kword'] = self.kwargs['pk']
+#         return context
 
-    def get_context_data(self, **kwargs):
-        context = super(ArticleUpdateView, self).get_context_data(**kwargs)
-        context['kword'] = self.kwargs['pk']
-        return context
 
-
-class ArticleDeleteView(DeleteView):
-    """metodo para eliminar un articulo"""
-    model = Article
-    template_name = 'articulo/delete.html'
-    success_url = reverse_lazy('articulo_app:article-list', kwargs = {'pk' : '0'})
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        update_type_article('delete',self.object.type_article)
-        self.object.delete()
-        success_url = self.get_success_url()
-
-        return HttpResponseRedirect(success_url)
+# class ArticleUpdateView(DetailView):
+#     """"vista para actualizar un articulo"""
+#     template_name = 'articulo/update.html'
+#     model = Article
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ArticleUpdateView, self).get_context_data(**kwargs)
+#         context['kword'] = self.kwargs['pk']
+#         return context
+#
+#
+# class ArticleDeleteView(DeleteView):
+#     """metodo para eliminar un articulo"""
+#     model = Article
+#     template_name = 'articulo/delete.html'
+#     success_url = reverse_lazy('articulo_app:article-list', kwargs = {'pk' : '0'})
+#
+#     def delete(self, request, *args, **kwargs):
+#         self.object = self.get_object()
+#         update_type_article('delete',self.object.type_article)
+#         self.object.delete()
+#         success_url = self.get_success_url()
+#
+#         return HttpResponseRedirect(success_url)
