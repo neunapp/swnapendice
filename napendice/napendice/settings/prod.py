@@ -1,6 +1,6 @@
 from .base import *
 #archivo de producccion
-DEBUG = False
+DEBUG = True
 
 THUMBNAIL_DEBUG = True
 
