@@ -56,7 +56,8 @@ class Article(TimeStampedModel):
     credits_image = models.CharField('creditos imagen', max_length=150)
     slug = models.SlugField(editable=False, max_length=200)
     tag = models.ManyToManyField(Tag, verbose_name='tag')
-    published = models.BooleanField('publicado')
+    published = models.BooleanField('publicado', default=False)
+    programado = models.BooleanField('programado', default=False)
     user_created = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="usuario_editor",

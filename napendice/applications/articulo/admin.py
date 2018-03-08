@@ -10,8 +10,10 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'created',
+        'date',
         'type_article',
         'published',
+        'programado',
         'user_created',
         'user_modified',
     )
@@ -28,6 +30,8 @@ class ArticleAdmin(admin.ModelAdmin):
         'city',
         'tag',
         'published',
+        'programado',
+        'date',
         'show_home',
         'image',
         'credits_image',

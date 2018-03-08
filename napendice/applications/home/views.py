@@ -10,10 +10,12 @@ from .models import Contact
 from .forms import ContactForm, SearchForm
 from applications.articulo.models import Article
 
+#
+from applications.mixins import UpdateArticlesMixin
 # Create your views here.
 
 
-class ContactCreateView(CreateView):
+class ContactCreateView(UpdateArticlesMixin, CreateView):
     '''
     formulario de contactenos
     '''
@@ -38,7 +40,7 @@ class ContactCreateView(CreateView):
             return self.render_to_response(self.get_context_data(form=form))
 
 
-class IndexView(TemplateView):
+class IndexView(UpdateArticlesMixin, TemplateView):
     '''
     Pagina principal de apendice donde se van a mostrar las noticias mas
     importantes del dia
@@ -56,7 +58,7 @@ class IndexView(TemplateView):
     template_name = 'home/index.html'
 
 
-class ArticleListView(ListView):
+class ArticleListView(UpdateArticlesMixin, ListView):
     context_object_name = 'articles'
     model = Article
     template_name = 'home/search.html'

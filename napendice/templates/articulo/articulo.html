@@ -14,11 +14,18 @@
   <main class="main">
     <div class="ed-container">
 
+      <div class="ed-item s-100 l-10">
+
+      </div>
       <article class="ed-item ed-container s-100 l-60 article">
-        <div class="ed-item s-100 article__date">{{ article.created }}</div>
+        {% if article.date != '' %}
+          <div class="ed-item s-100 article__date">{{ article.created }}</div>
+        {% else %}
+          <div class="ed-item s-100 article__date">{{ article.created }}</div>
+        {% endif %}
         <div class="ed-item s-100 article__info">
           <div class="article__data">
-            <h1 class="article__title">{{ article.title }}</h1>
+            <h1 class="article__title" style="font-size: 2.3em;font-weight: bold;">{{ article.title }}</h1>
             <p class="article__description">{{ article.bajada }}</p>
           </div>
           <div class="article__widget">
@@ -40,9 +47,11 @@
         </div>
         <div class="ed-item s-100">
           <img src="{{ article.image.url }}" class="article__img" alt="{{ article.title }}">
+          <p class="article__description">Creditos Imagen: {{ article.credits_image }}</p>
         </div>
         <div class="ed-item s-100 article__content">
           {{ article.content|safe }}
+          <p class="article__description">Por: {{ article.credits_article }}</p>
         </div>
       </article>
 
@@ -94,7 +103,12 @@
           </div>
 
           <div class="news__body">
-            <div class="news__date">Hace {{ news.created|timesince }}</div>
+            {% if news.date != '' %}
+              <div class="news__date">Hace {{ news.date|timesince }}</div>
+            {% else %}
+              <div class="news__date">Hace {{ news.created|timesince }}</div>
+            {% endif %}
+
             <h2 class="news__title--outstanding">
               <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}">
                 {{ news.title }}

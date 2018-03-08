@@ -16,8 +16,11 @@ from applications.home.forms import SearchForm
 from .models import Article
 from .functions import update_type_article
 
+#
+from applications.mixins import UpdateArticlesMixin
 
-class ArticleDetailView(DetailView):
+
+class ArticleDetailView(UpdateArticlesMixin, DetailView):
     '''
     Vista para mostrar el detalle de un articulo.
     '''
@@ -32,7 +35,7 @@ class ArticleDetailView(DetailView):
         return context
 
 
-class ArticleCategoryView(TemplateView):
+class ArticleCategoryView(UpdateArticlesMixin, TemplateView):
     '''
     Vista para mostrar todos los articulos de acuerdo a las categorias.
     '''
@@ -72,7 +75,7 @@ class ArticleCategoryView(TemplateView):
         return context
 
 
-class ArticleListView(ListView):
+class ArticleListView(UpdateArticlesMixin, ListView):
     """"vista que lista articulos"""
 
     context_object_name = 'articles'

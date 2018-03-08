@@ -45,7 +45,12 @@
 
 
             <div class="news__body">
-              <div class="news__date">Hace {{ destacado.created|timesince }}</div>
+              {% if destacado.date != '' %}
+                <div class="news__date">Hace {{ destacado.date|timesince }}</div>
+              {% else %}
+                <div class="news__date">Hace {{ destacado.created|timesince }}</div>
+              {% endif %}
+
               <h2 class="news__title--outstanding">
                 <a href="{% url 'articulo_app:article-detail' destacado.category|slugify destacado.slug %}">
                   {{ destacado.title }}
@@ -90,7 +95,12 @@
           </div>
 
           <div class="news__body">
-            <div class="news__date">Hace {{ news.created|timesince }}</div>
+            {% if news.date != '' %}
+              <div class="news__date">Hace {{ news.date|timesince }}</div>
+            {% else %}
+              <div class="news__date">Hace {{ news.created|timesince }}</div>
+            {% endif %}
+
             <h2 class="news__title--outstanding">
               <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}">
                 {{ news.title }}
