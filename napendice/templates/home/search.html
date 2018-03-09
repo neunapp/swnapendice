@@ -32,14 +32,14 @@
           <article class="news news--outstanding">
             <div class="news__image">
               <img src="{{ destacado.image.url }}" alt="{{ destacado.title }}" />
-              {% if destacado.category|slugify == 'investigacion' %}
+              {% if destacado.category|slugify == 'lima' %}
               <div class="news__category--investigation">{{ destacado.category }}</div>
               {% elif  destacado.category|slugify == 'politica' %}
               <div class="news__category--politics">{{ destacado.category }}</div>
               {% elif  destacado.category|slugify == 'miscelanea' %}
               <div class="news__category--miscelanea">{{ destacado.category }}</div>
               {% else %}
-              <div class="news__category--topicality">{{ destacado.category }}</div>
+              <div class="news__category--topicality" style="background:#039be5;">{{ destacado.category }}</div>
               {% endif %}
             </div>
 
@@ -83,14 +83,14 @@
         <article class="ed-item s-100 m-1-3 l-25 news news--standar">
           <div class="news__image">
             <img src="{{ news.image.url }}" alt="{{ news.title }}" />
-            {% if news.category|slugify == 'investigacion' %}
+            {% if news.category|slugify == 'lima' %}
             <div class="news__category--investigation">{{ news.category }}</div>
             {% elif  news.category|slugify == 'politica' %}
             <div class="news__category--politics">{{ news.category }}</div>
             {% elif  news.category|slugify == 'miscelanea' %}
             <div class="news__category--miscelanea">{{ news.category }}</div>
             {% else %}
-            <div class="news__category--topicality">{{ news.category }}</div>
+            <div class="news__category--topicality" style="background:#039be5;">{{ news.category }}</div>
             {% endif %}
           </div>
 

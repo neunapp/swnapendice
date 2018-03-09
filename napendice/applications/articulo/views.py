@@ -17,6 +17,8 @@ from .models import Article
 from .functions import update_type_article
 
 #
+from applications.miscelanea.models import Category
+#
 from applications.mixins import UpdateArticlesMixin
 
 
@@ -45,17 +47,13 @@ class ArticleCategoryView(UpdateArticlesMixin, TemplateView):
         context = super(ArticleCategoryView, self).get_context_data(**kwargs)
         # recuperamos el valro q viene por url
         category = self.kwargs['category']
-        if category == 'politica':
-            category = 'política'
-
-        if category == 'investigacion':
-            category = 'investigación'
-
-        if category == 'miscelanea':
-            category = 'miscelánea'
-
+        pk = self.kwargs['pk']
+        print('************+')
+        print(category)
         # lista de articulos de acuerdo a una categoria
-        articles = Article.objects.articleCategory(category)
+        articles = Article.objects.filter(
+            category__pk=pk,
+        ).order_by('-created')
         # cantidad de articulos
         count = articles.count()
         context['count'] = count

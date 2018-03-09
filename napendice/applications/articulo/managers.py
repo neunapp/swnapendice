@@ -12,10 +12,16 @@ class ArticleManager(Manager):
         '''
         recuperar el articulo de la portada de acuerdo a la fecha
         '''
-        portada = self.filter(
+        consulta = self.filter(
             published=True,
             type_article='F',
-        ).order_by('-created')[0]
+        )
+        if consulta.count() > 0:
+            portada = consulta.order_by('-created')[0]
+        else:
+            portada = self.filter(
+                published=True,
+            )[0]
         return portada
 
     def outstanding(self):

@@ -15,7 +15,7 @@ urlpatterns = [
         name='article-list'
     ),
     url(
-        r'^(?P<category>[-\w]+)/$',
+        r'^(?P<category>[-\w]+)/(?P<pk>\d+)/$',
         views.ArticleCategoryView.as_view(),
         name='article-category'
     ),

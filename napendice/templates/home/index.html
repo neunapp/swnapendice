@@ -25,14 +25,14 @@
         <article class="news news--home">
           <div class="news__image">
             <img src="{{ portada.image.url }}" alt="{{ portada.title }}" />
-            {% if portada.category|slugify == 'investigacion' %}
+            {% if portada.category|slugify == 'lima' %}
             <span class="news__category--investigation">{{ portada.category }}</span>
             {% elif  portada.category|slugify == 'politica' %}
             <span class="news__category--politics">{{ portada.category }}</span>
             {% elif  portada.category|slugify == 'miscelanea' %}
             <span class="news__category--miscelanea">{{ portada.category }}</span>
             {% else %}
-            <span class="news__category--topicality">{{ portada.category }}</span>
+            <span class="news__category--topicality" style="background:#039be5;">{{ portada.category }}</span>
             {% endif %}
           </div>
 
