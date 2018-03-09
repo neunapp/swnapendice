@@ -48,11 +48,10 @@ class ArticleCategoryView(UpdateArticlesMixin, TemplateView):
         # recuperamos el valro q viene por url
         category = self.kwargs['category']
         pk = self.kwargs['pk']
-        print('************+')
-        print(category)
         # lista de articulos de acuerdo a una categoria
         articles = Article.objects.filter(
             category__pk=pk,
+            published=True,
         ).order_by('-created')
         # cantidad de articulos
         count = articles.count()
