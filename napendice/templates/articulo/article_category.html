@@ -35,7 +35,7 @@
 
           <div class="news__body">
 
-            {% if article.date =='' %}
+            {% if article.date != '' %}
               <div class="news__date">Hace {{ portada.date|timesince }}</div>
             {% else %}
               <div class="news__date">Hace {{ portada.created|timesince }}</div>
@@ -75,7 +75,7 @@
 
 
             <div class="news__body">
-              {% if article.date =='' %}
+              {% if article.date != '' %}
                 <div class="news__date">Hace {{ destacado.date|timesince }}</div>
               {% else %}
                 <div class="news__date">Hace {{ destacado.created|timesince }}</div>
@@ -127,7 +127,7 @@
         </div>
 
         <div class="news__body">
-          {% if article.date =='' %}
+          {% if article.date != '' %}
             <div class="news__date">Hace {{ news.date|timesince }}</div>
           {% else %}
             <div class="news__date">Hace {{ news.created|timesince }}</div>
@@ -180,7 +180,7 @@
       </div>
 
         <div class="news__body">
-          {% if article.date =='' %}
+          {% if article.date != '' %}
             <div class="news__date">Hace {{ news.date|timesince }}</div>
           {% else %}
             <div class="news__date">Hace {{ news.created|timesince }}</div>
