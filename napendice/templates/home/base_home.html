@@ -3,19 +3,18 @@
 {% load  staticfiles %}
 
 {% block css %}
-  <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'fundation/css/foundation.css' %}">
 {% endblock css %}
 
 {% block js %}
   <!-- Javascrip para foundtion -->
-  <script src="{% static 'fundation/js/vendor/jquery.js' %}"></script>
-  <script src="{% static 'fundation/js/vendor/what-input.js' %}"></script>
-  <script src="{% static 'fundation/js/vendor/foundation.js' %}"></script>
-  <script src="{% static 'fundation/js/app.js' %}"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/foundation.min.js' %}"></script>
+  <script src="{% static 'js/fontawesome-all.min.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/scrips.js' %}"></script>
   <!-- Javascrip para foundation -->
-  <script src="{% static 'js/scripts.js' %}"></script>
 
   <!-- analytics google-->
   <script>

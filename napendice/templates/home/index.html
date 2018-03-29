@@ -45,7 +45,7 @@
             {% endif %}
 
             <h1 class="news__title--home">
-              <a href="{% url 'articulo_app:article-detail' portada.category|slugify portada.slug %}" style="font-size: 1.4em;">
+              <a href="{% url 'articulo_app:article-detail' portada.category|slugify portada.slug %}">
                 {{ portada.title }}
               </a>
             </h1>

@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView
 from django.views.generic import ListView
 
 # local
-from .models import Contact
+from .models import Contact, Home
 from .forms import ContactForm, SearchForm
 from applications.articulo.models import Article
 

@@ -1,0 +1,34 @@
+//archivo de confguracion scss
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Ubuntu+Condensed');
+// tipo de letra
+$ms-ff-1: 'Roboto', sans-serif;
+$ms-ff-2: 'Lato', sans-serif;
+$ms-ff-3: 'Ubuntu Condensed', sans-serif;
+
+//colores
+
+
+//funcion para devover imgen
+@function img($img) {
+  @return url('../img/#{$img}');
+}
+
+//funcion para responsive web desing
+//para llamar al mixin utilizar @include
+@mixin desde($size) {
+  @media screen and (min-width: $size){
+    @content;
+  }
+}
+
+@mixin hasta($size) {
+  @media screen and (max-width:$size){
+    @content;
+  }
+}
+
+@mixin desde_hasta($desde,$hasta) {
+  @media screen and (min-width: $desde) and (max-width: $hasta){
+    @content;
+  }
+}

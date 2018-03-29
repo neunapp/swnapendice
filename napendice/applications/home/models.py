@@ -10,6 +10,25 @@ from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
 
 # Create your models here.
+@python_2_unicode_compatible
+class Home(TimeStampedModel):
+
+    title = models.CharField('titulo', max_length=200)
+    image = models.ImageField(
+        'imagen de banner',
+        upload_to='home',
+        blank=True,
+        null=True
+    )
+
+    class Meta:
+        verbose_name = 'Banner Pricipal'
+        verbose_name_plural = 'Banners'
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.title
+
 
 @python_2_unicode_compatible
 class Contact(TimeStampedModel):

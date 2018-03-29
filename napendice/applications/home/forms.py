@@ -37,7 +37,8 @@ class SearchForm(forms.Form):
         required=False,
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Buscar'
+                'placeholder': 'Buscar',
+                'class': 'principal-header__search__input'
             }
         )
     )

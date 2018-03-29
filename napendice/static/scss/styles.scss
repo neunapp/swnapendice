@@ -8,6 +8,9 @@ $devMode: false;
 // local import
 @import 'config-styles';
 
+// import components
+@import 'components/header/mov_header';
+
 // local modules import
 @import 'module/header';
 @import 'module/footer';

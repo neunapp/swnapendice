@@ -1,51 +1,55 @@
 {% load staticfiles %}
-
-<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-  <button class="menu-icon" type="button" data-toggle="header-menu"></button>
-  <div class="title-bar-title">Menu</div>
-</div>
-
-<div class="top-bar" id="example-menu">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-					<li> &emsp;&emsp;&emsp;&emsp;&emsp;</li>
-          <li class="main-menu__item"><a href="{% url 'articulo_app:article-list' %}">Lo último</a></li>
-			{% for category in myCategorys %}
-					<li class="main-menu__item">
-						<a href="{% url 'articulo_app:article-category' category.name|slugify category.pk %}">{{ category.name|title }}</a>
-					</li>
-			{% endfor %}
+<div class="principal-header" style="background:#424242;">
+    <ul class="principal-header__ul">
+        {% for category in myCategorys %}
+        <li class="principal-header__ul__li">
+            <a href="{% url 'articulo_app:article-category' category.name|slugify category.pk %}" class="principal-header__ul__li__a">{{ category.name|title }}</a>
+        </li>
+        {% endfor %}
     </ul>
-	</div>
-  <div class="top-bar-right">
-    <form action="/buscar-noticias" method="get">{% csrf_token %}
-    <ul class="menu">
-      <li>{{form.kword}}</li>
-      <li><button type="submit" class="button">Buscar</button></li>
-    </ul>
+    <form class="principal-header__search" action="/buscar-noticias" method="get">{% csrf_token %}
+        {{form.kword}}
+        <button type="submit" class="principal-header__search__btn">
+            <i class="fas fa-search"></i>
+        </button>
     </form>
-  </div>
 </div>
-<header class="main-header cross-center">
-	<div class="ed-container">
-		<div class="ed-item s-45 m-35 main-logo">
-			<a href="{% url 'home_app:index' %}">
-				<img src="{% static 'img/logo-apendice.png' %}" alt="logo-apendice">
-			</a>
-		</div>
 
-		<div class="ed-item s-55 m-65 cross-center main-end">
-			<!--<div class="social">
-				<form method="get" class="form-horizontal">{% csrf_token %}
-     		<input type="text" placeholder="Buscar ..." required>
-     		<button type="submit" hidden="false">Buscar</button>
- 				</form>
-			</div>-->
-			<div class="social">
-				<a href="https://www.facebook.com/apendice.pe" class="social--facebook"><i class="fa fa-facebook"></i></a>
-				<a href="https://twitter.com/apendicepe" class="social--twitter"><i class="fa fa-twitter"></i></a>
-			</div>
-		</div>
-	</div>
-</header> <!-- .main-header -->
-<div class="divider--bottom"></div>
+<div class="mov-header">
+    <div class="mov-header__head">
+        <i id="menu-icon" class="fas fa-bars mov-header__head__icon"></i>
+        <a href="/" class="mov-header__head__link">Apendice</a>
+    </div>
+    <div id="mov-header__menu" class="mov-header__menu">
+        <ul class="mov-header__menu__ul">
+            {% for category in myCategorys %}
+            <li class="mov-header__menu__ul__li">
+                <a href="{% url 'articulo_app:article-category' category.name|slugify category.pk %}" class="mov-header__menu__ul__li__a">{{ category.name|title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div> 
+<!-- <header style="width: 100%;height: 200px;">
+	<img src="{{home_banner.image.url}}" alt="{{home_banner.title}}" style="width: 100%;height: 100%;">
+</header> -->
+<header class="main-header cross-center">
+    <div class="ed-container">
+        <div class="ed-item s-45 m-35 main-logo">
+            <a href="{% url 'home_app:index' %}">
+                <img src="{% static 'img/logo-apendice.png' %}" alt="logo-apendice">
+            </a>
+        </div>
+
+        <div class="ed-item s-55 m-65 cross-center main-end">
+            <div class="social">
+                <a href="https://www.facebook.com/apendice.pe" target="_blanck" class="social--facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/apendicepe" target="_blanck" class="social--twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

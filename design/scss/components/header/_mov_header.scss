@@ -1,0 +1,62 @@
+.mov-header {
+    position: relative;
+    display: block;
+    @include desde(1000px){
+        display: none;
+    }
+    &__head {
+        background:#424242;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5em;
+        &__icon {
+            font-size: 1.5em;
+            &:hover {
+                cursor: pointer;
+            }
+        };
+        &__link {
+            color: white;
+            font-family: $ms-ff-2;
+            font-size: 18px;
+            &:hover {
+                cursor: pointer;
+                color: white;
+            }
+        }
+    }
+}
+
+.mov-header__menu {
+    display: none;
+    background-color:rgba(0,0,0,0.25);
+    width: 100%;
+    height: 93vh;
+    left: 0px;
+    top: 40px;
+    &__ul {
+        list-style: none;
+        margin: 0px;
+        background: white;
+        width: 50%;
+        height: 100%;
+        padding-top: 1em;
+        &__li {
+            font-family: $ms-ff-1;
+            border-bottom: 1px solid;
+            border-color: #E0E0E0;
+            &__a {
+                color: #424242;
+                display: block;
+                width: 100%;
+                padding: {
+                    top: 10px;
+                    bottom: 10px;
+                    left: 1em;
+                };
+            }
+        }
+    }
+}
