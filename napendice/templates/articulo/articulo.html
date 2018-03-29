@@ -31,16 +31,16 @@
           <div class="article__widget">
             <ul class="article__widget__list">
               <li class="article__widget__item">
-                <i class="fa fa-tags"></i>{{ article.category }}
+                <i class="fas fa-tag" style="margin-right:0.5em;"></i>{{ article.category }}
               </li>
               <li class="article__widget__item">
-                <i class="fa fa-eye"></i>100
+                <a href="whatsapp://send?text={{ request.build_absolute_uri }}" target="_blank" class="article__widget__link"><i class="fab fa-whatsapp" style="margin-right:0.5em;"></i> compartir</a>
               </li>
               <li class="article__widget__item">
-                <a href="#" class="article__widget__link"><i class="fa fa-facebook"></i> compartir</a>
+                <a href="http://www.facebook.com/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="article__widget__link"><i class="fab fa-facebook-f" style="margin-right:0.5em;"></i> compartir</a>
               </li>
               <li class="article__widget__item">
-                <a href="#" class="article__widget__link"><i class="fa fa-twitter"></i>compartir</a>
+                <a href="#" class="article__widget__link"><i class="fab fa-twitter" style="margin-right:0.5em;"></i>compartir</a>
               </li>
             </ul>
           </div>
