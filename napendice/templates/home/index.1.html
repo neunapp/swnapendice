@@ -25,21 +25,31 @@
         <article class="news news--home">
           <div class="news__image">
             <img src="{{ portada.image.url }}" alt="{{ portada.title }}" />
+            {% if portada.category|slugify == 'lima' %}
+            <span class="news__category--investigation">{{ portada.category }}</span>
+            {% elif  portada.category|slugify == 'politica' %}
+            <span class="news__category--politics">{{ portada.category }}</span>
+            {% elif  portada.category|slugify == 'miscelanea' %}
+            <span class="news__category--miscelanea">{{ portada.category }}</span>
+            {% else %}
+            <span class="news__category--topicality" style="background:#039be5;">{{ portada.category }}</span>
+            {% endif %}
           </div>
 
+
           <div class="news__body">
-            <div class="news__date">{{ portada.category }}</div>
+            {% if portada.date != '' %}
+              <div class="news__date">Hace {{ portada.date|timesince }}</div>
+            {% else %}
+              <div class="news__date">Hace {{ portada.created|timesince }}</div>
+            {% endif %}
+
             <h1 class="news__title--home">
               <a href="{% url 'articulo_app:article-detail' portada.category|slugify portada.slug %}">
                 {{ portada.title }}
               </a>
             </h1>
             <p class="news__description">{{ portada.description }}</p>
-            {% if portada.date != '' %}
-              <div class="news__date">Hace {{ portada.date|timesince }}</div>
-            {% else %}
-              <div class="news__date">Hace {{ portada.created|timesince }}</div>
-            {% endif %}
             <a href="{% url 'articulo_app:article-detail' portada.category|slugify portada.slug %}" class="news__link">Ver más...</a>
           </div>
         </article>
@@ -52,20 +62,31 @@
           <article class="news news--outstanding">
             <div class="news__image">
               <img src="{{ destacado.image.url }}" alt="{{ destacado.title }}" />
+              {% if destacado.category|slugify == 'investigacion' %}
+              <div class="news__category--investigation">{{ destacado.category }}</div>
+              {% elif  destacado.category|slugify == 'politica' %}
+              <div class="news__category--politics">{{ destacado.category }}</div>
+              {% elif  destacado.category|slugify == 'miscelanea' %}
+              <div class="news__category--miscelanea">{{ destacado.category }}</div>
+              {% else %}
+              <div class="news__category--topicality">{{ destacado.category }}</div>
+              {% endif %}
             </div>
+
+
             <div class="news__body">
-              <div class="news__date">{{ destacado.category }}</div>
+              {% if destacado.date != '' %}
+                <div class="news__date">Hace {{ destacado.date|timesince }}</div>
+              {% else %}
+                <div class="news__date">Hace {{ destacado.created|timesince }}</div>
+              {% endif %}
+
               <h2 class="news__title--outstanding">
                 <a href="{% url 'articulo_app:article-detail' destacado.category|slugify destacado.slug %}">
                   {{ destacado.title }}
                 </a>
               </h2>
               <p class="news__description--outstanding">{{ destacado.description|truncatechars_html:130  }}</p>
-              {% if portada.date != '' %}
-                <div class="news__date">Hace {{ portada.date|timesince }}</div>
-              {% else %}
-                <div class="news__date">Hace {{ portada.created|timesince }}</div>
-              {% endif %}
               <a href="{% url 'articulo_app:article-detail' destacado.category|slugify destacado.slug %}" class="news__link">Ver más...</a>
             </div>
           </article>
@@ -92,21 +113,30 @@
         <article class="ed-item s-100 m-1-3 l-25 news news--standar">
           <div class="news__image">
             <img src="{{ news.image.url }}" alt="{{ news.title }}" />
+            {% if news.category|slugify == 'investigacion' %}
+            <div class="news__category--investigation">{{ news.category }}</div>
+            {% elif  news.category|slugify == 'politica' %}
+            <div class="news__category--politics">{{ news.category }}</div>
+            {% elif  news.category|slugify == 'miscelanea' %}
+            <div class="news__category--miscelanea">{{ news.category }}</div>
+            {% else %}
+            <div class="news__category--topicality">{{ news.category }}</div>
+            {% endif %}
           </div>
 
           <div class="news__body">
-            <div class="news__date">{{ news.category }}</div>
+            {% if news.date != '' %}
+              <div class="news__date">Hace {{ news.date|timesince }}</div>
+            {% else %}
+              <div class="news__date">Hace {{ news.created|timesince }}</div>
+            {% endif %}
+
             <h2 class="news__title--outstanding">
               <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}">
                 {{ news.title }}
               </a>
             </h2>
             <p class="news__description--outstanding">{{ news.description|truncatechars_html:90 }}</p>
-            {% if destacado.date != '' %}
-                <div class="news__date">Hace {{ destacado.date|timesince }}</div>
-            {% else %}
-                <div class="news__date">Hace {{ destacado.created|timesince }}</div>
-            {% endif %}
             <a href="{% url 'articulo_app:article-detail' news.category|slugify news.slug %}" class="news__link">Ver más...</a>
           </div>
         </article>

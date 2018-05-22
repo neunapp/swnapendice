@@ -1,14 +1,18 @@
 {% load staticfiles %}
 <div class="principal-header" style="background:#424242;">
     <ul class="principal-header__ul">
+        <li class="principal-header__ul__li">
+            <a href="{% url 'articulo_app:article-list' %}" class="principal-header__ul__li__a">
+                Lo último
+            </a>
+        </li>
         {% for category in myCategorys %}
         <li class="principal-header__ul__li">
             <a href="{% url 'articulo_app:article-category' category.name|slugify category.pk %}" class="principal-header__ul__li__a">{{ category.name|title }}</a>
         </li>
         {% endfor %}
     </ul>
-    <form class="principal-header__search" action="/buscar-noticias" method="get">{% csrf_token %}
-        {{form.kword}}
+    <form class="principal-header__search" action="/buscar-noticias" method="get">{% csrf_token %} {{form.kword}}
         <button type="submit" class="principal-header__search__btn">
             <i class="fas fa-search"></i>
         </button>
@@ -22,6 +26,11 @@
     </div>
     <div id="mov-header__menu" class="mov-header__menu">
         <ul class="mov-header__menu__ul">
+            <li class="mov-header__menu__ul__li">
+                <a href="{% url 'articulo_app:article-list' %}" class="mov-header__menu__ul__li__a">
+                    Lo último
+                </a>
+            </li>
             {% for category in myCategorys %}
             <li class="mov-header__menu__ul__li">
                 <a href="{% url 'articulo_app:article-category' category.name|slugify category.pk %}" class="mov-header__menu__ul__li__a">{{ category.name|title }}</a>
@@ -29,7 +38,7 @@
             {% endfor %}
         </ul>
     </div>
-</div> 
+</div>
 <!-- <header style="width: 100%;height: 200px;">
 	<img src="{{home_banner.image.url}}" alt="{{home_banner.title}}" style="width: 100%;height: 100%;">
 </header> -->
