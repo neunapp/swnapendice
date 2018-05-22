@@ -93,7 +93,7 @@ ENV/
 
 # Secrect json
 
-napendice/manage.py
+#napendice/manage.py
 napendice/secrets.json
 napendice/settings.py
 napendice/napendice/settings/prod.py
